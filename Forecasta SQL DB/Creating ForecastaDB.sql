@@ -1,1 +1,1 @@
-CREATE database ForecastaDB;
+CREATE DATABASE "ForecastaDB"

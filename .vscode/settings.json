@@ -7,7 +7,8 @@
             "driver": "PostgreSQL",
             "name": "Forecasta Database",
             "database": "ForecastaDB",
-            "username": "postgres"
+            "username": "postgres",
+            "password": "Password123!"
         }
     ]
 }

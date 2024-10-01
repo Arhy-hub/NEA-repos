@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 def geometric_brownian_motion(number_of_paths,start_price,drift_coefficient,volatility,time_duration,time_steps):
     dt = time_duration/time_steps #change in time
     t = np.linspace(0, time_duration,time_steps + 1) #equal spaced time intervals
-    wiener_process = np.random.normal(size=(number_of_paths, time_steps)) * np.sqrt(dt) #generating wiener process
+    wiener_process = np.random.normal(size=(number_of_paths, time_steps)) #generating wiener process
     wiener_process = np.concatenate((np.zeros((number_of_paths, 1)) , wiener_process), axis=1)
     cumulative_sum = np.cumsum((drift_coefficient - 0.5 * volatility**2) * dt + volatility * wiener_process, axis=1)
     current_price = start_price * np.exp(cumulative_sum) # price generated

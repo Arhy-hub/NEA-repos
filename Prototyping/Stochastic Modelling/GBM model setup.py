@@ -5,12 +5,12 @@ import matplotlib.pyplot as plt
 
 
 #parameters
-St = 1000 #initial price
-mu = 0.03876965443929 #drift coefficient
-sigma = 10.0392 #volatility
-time_duration = 10 #forecasting length of time
-time_steps = 3650 #number of steps e.g. interval
-num_paths = 10 #number of pathways evaluated for monte carlo sim
+St = 42.98 #initial price
+mu = 2.4323 #drift coefficient
+sigma = 0.542 #volatility
+time_duration = 1 #forecasting length of time
+time_steps = 365 #number of steps e.g. interval
+num_paths = 1000 #number of pathways evaluated for monte carlo sim
 
 def GBM(St,mu,sigma,time_duration,time_steps,k):
     dt = time_duration/time_steps

@@ -5,10 +5,10 @@
             "server": "localhost",
             "port": 5432,
             "driver": "PostgreSQL",
-            "name": "ForecastDB",
+            "name": "ForecastaDB",
             "database": "ForecastaDB",
             "username": "postgres",
             "password": "Password123!"
-        }
+        },
     ]
 }

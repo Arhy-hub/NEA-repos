@@ -1,8 +1,8 @@
 body {
-    background-color: darkblue;
+    background-color: rgba(30,30,36);
 }
 
 h1 {
     color: white;
-    margin-left: 20px;
+    margin-left: 500px;
 }

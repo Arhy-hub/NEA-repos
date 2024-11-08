@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 #parameters
 St = 42.98 #initial price
-mu = 2.4323 #drift coefficient
+mu = 0.07554323 #drift coefficient
 sigma = 0.542 #volatility
 time_duration = 1 #forecasting length of time
 time_steps = 365 #number of steps e.g. interval

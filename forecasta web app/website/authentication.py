@@ -13,7 +13,7 @@ def login():
 
 @authentication.route('/logout')
 def logout():
-    return "<h1>adi and amaira are goats and arhaan is the gorilla</h1>"
+    return "<h1></h1>"
 
 @authentication.route('/sign-up')
 def sign_up():

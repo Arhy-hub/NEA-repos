@@ -1,0 +1,19 @@
+body {
+    background-color: #1e1e24;
+}
+
+
+p {
+    color: #ffffff;
+    position: relative;
+    font-family: "Inter", sans-serif;
+    font-size: 100;
+
+    justify-content: center;
+    align-items: center;    
+}
+
+image {
+    image-rendering: optimizeQuality;
+    object-position: 2000px 1000px;
+}

@@ -10,7 +10,7 @@
     <body>
         <div class="wrapper">
             <h1>Sign Up</h1>
-            <form>
+            <form method="POST">
                 <div>
                     <label for="UserNameInp">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#006AFF"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/></svg>
@@ -29,11 +29,19 @@
                     </label>
                     <input required type="password",name="RepPasswordInp" id="RepPasswordInp" placeholder="Confirm Password">
                 </div>
+
                 <button type="submit" class="button signup">Sign Up</button>
             </form>
             <a href="127.0.0.1:5000/login">
                 <button type="button" class="button login">Have an Account?</button>
             </a>
         </div>
+        {% with alerts = get_flashed_alerts(with_categories=true) %}
+        {% if alerts %}
+            {% for alert in alerts %}
+            <div class = "alert">
+                
+            {% endfor %}
+        {% endif %}
     </body>
 </html>

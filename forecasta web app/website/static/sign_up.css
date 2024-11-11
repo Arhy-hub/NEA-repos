@@ -78,15 +78,19 @@ form label{
     align-items: center;
 }
 
+form input:focus{
+    outline: none;
+}
+
 /*styling sign up button*/
-.signup{
+.sign_up{
     background-color: #006aff;
     color: #ffffff;
     border: 0px;
     border-radius: 30px;
     width: 175px;
-    height: fit-content;
-    font-size: 30px;
+    height: 30px;
+    font-size: 20px;
     
 }
 
@@ -100,8 +104,6 @@ form label{
     border-radius: 30px;
     border: 0;
     height: fit-content;
-    
-    
 }
 
 

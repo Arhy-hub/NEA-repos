@@ -24,7 +24,7 @@ def sign_up():
     print(request.form)
 
     if request.method == "POST":
-        UserName = request.form.get('UseNameInp')
+        UserName = request.form.get('UserNameInp')
         Password = request.form.get('PasswordInp')
         RepPassword = request.form.get('RepPasswordInp')
 
@@ -47,5 +47,6 @@ def sign_up():
             cursor.execute("INSERT INTO users(user_name,password) VALUES(%s,%s);",(UserName,Password))
             connection.commit() 
             cursor.close() 
-            connection.close() 
+            connection.close()
+            return redirect(url_for('views.home'))
     return render_template("sign_up.html", boolean=True)

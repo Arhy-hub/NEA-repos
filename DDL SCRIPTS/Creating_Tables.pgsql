@@ -1,38 +1,43 @@
 CREATE TABLE users (
-    user_id INT PRIMARY KEY,
-    user_name VARCHAR(100),
-    password VARCHAR(100)
+    user_id uuid DEFAULT gen_random_uuid(),
+    user_name VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    PRIMARY KEY (user_id)
 );
 -- created users table. will store a hash of all the users data
 -- allowing user's name and password to be 100 characters long due to it being stored as encrypted hash
 
+CREATE TABLE markets(
+    market_id uuid DEFAULT gen_random_uuid(),
+    market_name varchar(255) NOT NULL,
+    region_name varchar(255) NOT NULL,
+    market_availability BOOLEAN NOT NULL,
+    PRIMARY KEY (market_id)
+);
+-- creating market table that stores data about specific market
+
+
 CREATE TABLE assets (
-    asset_id INT PRIMARY KEY,
-    market_id INT,
-    asset_name VARCHAR(255),
-    asset_type VARCHAR (255),
-    asset_value INT,
-    asset_price_change INT,
+    asset_id uuid DEFAULT gen_random_uuid(),
+    market_id uuid,
+    asset_name VARCHAR(255) NOT NULL,
+    asset_type VARCHAR (255) NOT NULL,
+    asset_value INT NOT NULL,
+    asset_price_change INT NOT NULL,
+    PRIMARY KEY (asset_id),
     FOREIGN KEY( market_id) REFERENCES markets(market_id)
 );
 
 -- creating table storing all the relevant data to assets
 
 
-CREATE TABLE markets(
-    market_id INT PRIMARY KEY,
-    market_name varchar(255),
-    region_name varchar(255),
-    market_availability BOOLEAN
-);
--- creating market table that stores data about specific market
-
 CREATE TABLE news (
-    news_id BIGINT PRIMARY KEY,
-    market_id INT,
-    news_headline varchar(255),
-    news_content varchar(255),
+    news_id uuid DEFAULT gen_random_uuid(),
+    market_id uuid,
+    news_headline varchar(255) NOT NULL,
+    news_content varchar(255) NOT NULL,
     news_publishing_date DATE,
+    PRIMARY KEY (news_id),
     FOREIGN KEY (market_id) REFERENCES markets(market_id)
 );
 
@@ -41,9 +46,10 @@ CREATE TABLE news (
 
 
 CREATE TABLE favourite_assets (
-    user_asset_id INT PRIMARY KEY,
-    user_id INT,
-    asset_id INT,
+    user_asset_id uuid DEFAULT gen_random_uuid(),
+    user_id uuid,
+    asset_id uuid,
+    PRIMARY KEY (user_asset_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (asset_id) REFERENCES assets(asset_id)
 );

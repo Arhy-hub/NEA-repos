@@ -1,7 +1,7 @@
 CREATE TABLE users (
     user_id uuid DEFAULT gen_random_uuid(),
     user_name VARCHAR(100) NOT NULL,
-    password VARCHAR(100) NOT NULL,
+    password TEXT NOT NULL,
     PRIMARY KEY (user_id)
 );
 -- created users table. will store a hash of all the users data
@@ -9,8 +9,8 @@ CREATE TABLE users (
 
 CREATE TABLE markets(
     market_id uuid DEFAULT gen_random_uuid(),
-    market_name varchar(255) NOT NULL,
-    region_name varchar(255) NOT NULL,
+    market_name  VARCHAR(100) NOT NULL,
+    region_name VARCHAR(100) NOT NULL,
     market_availability BOOLEAN NOT NULL,
     PRIMARY KEY (market_id)
 );
@@ -20,8 +20,8 @@ CREATE TABLE markets(
 CREATE TABLE assets (
     asset_id uuid DEFAULT gen_random_uuid(),
     market_id uuid,
-    asset_name VARCHAR(255) NOT NULL,
-    asset_type VARCHAR (255) NOT NULL,
+    asset_name VARCHAR(100) NOT NULL,
+    asset_type VARCHAR(100) NOT NULL,
     asset_value INT NOT NULL,
     asset_price_change INT NOT NULL,
     PRIMARY KEY (asset_id),
@@ -34,8 +34,8 @@ CREATE TABLE assets (
 CREATE TABLE news (
     news_id uuid DEFAULT gen_random_uuid(),
     market_id uuid,
-    news_headline varchar(255) NOT NULL,
-    news_content varchar(255) NOT NULL,
+    news_headline VARCHAR(255)NOT NULL,
+    news_content TEXT NOT NULL,
     news_publishing_date DATE,
     PRIMARY KEY (news_id),
     FOREIGN KEY (market_id) REFERENCES markets(market_id)
@@ -55,3 +55,4 @@ CREATE TABLE favourite_assets (
 );
 
 -- creating unique combination of user id and asset id so each preference has a specific identifier
+

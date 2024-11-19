@@ -1,1 +1,2 @@
 ALPHA_VANTAGE =>  KLHEIVZHOMAM9FRW
+finnhub => cst7uepr01qq1ruqtqa0cst7uepr01qq1ruqtqag

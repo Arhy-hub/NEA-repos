@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
+from webfuncs import hashing_data , SQLqueries
 import re
 import pg8000
 import bcrypt
@@ -42,42 +43,21 @@ def sign_up():
             pass
         elif not re.search(r"[!@#$%^&*()\-_+=\\|~`\"'<>.,?{}\[\]:;]" , Password) or not re.search(r"[!@#$%^&*()\-_+=\\|~`\"'<>.,?{}\[\]:;]", RepPassword):
             pass
-        elif Already_Exists(UserName) == True:
+        elif SQLqueries.already_exists("users","user_name",UserName) == True:
             pass
         else:
-            hashed_password = hash_content(Password)
-
-            #connect to db
-            connection = pg8000.connect(database="ForecastaDB", user="postgres", password="Password123!", host="localhost", port="5432")
-            cursor = connection.cursor()
-            cursor.execute("INSERT INTO users(user_name,password) VALUES(%s,%s);",(UserName,hashed_password))
-            connection.commit() 
-            cursor.close() 
-            connection.close()
+            hashed_password = hashing_data.hash_content(Password)
+            SQLqueries.insert_data("users",["user_name","password"],[UserName,hashed_password])
             return redirect(url_for('views.home'))
     return render_template("sign_up.html", boolean=True)
 
+#connection = pg8000.connect(database="ForecastaDB", user="postgres", password="Password123!", host="localhost", port="5432")
+# cursor = connection.cursor() 
+# cursor.execute("INSERT INTO users(user_name,password) VALUES(%s,%s);",(UserName,hashed_password)) 
+# connection.commit()  
+# cursor.close()  
+# connection.close()
 
 
 
 
-#hashing algo
-def hash_content(content):
-    salt = bcrypt.gensalt()
-    hashed_content = bcrypt.hashpw(content.encode('utf-8'), salt)
-    verify_hash(content,hashed_content)
-    return hashed_content
-
-def verify_hash(content, hashed_content):
-    return bcrypt.checkpw(content.encode('utf-8'), hashed_content)
-
-def Already_Exists(UserName):
-    connection = pg8000.connect(database="ForecastaDB", user="postgres", password="Password123!", host="localhost", port="5432")
-    cursor = connection.cursor()
-    cursor.execute("SELECT EXISTS (SELECT 1 FROM users WHERE user_name = %s);",(UserName,))
-    Name_Exists = cursor.fetchone()
-    print(Name_Exists)
-    connection.commit()  
-    cursor.close() 
-    connection.close()
-    return Name_Exists[0]

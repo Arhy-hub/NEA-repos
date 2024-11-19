@@ -1,8 +1,8 @@
-from flask import Blueprint
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 
 views = Blueprint('views', __name__)
 
-@views.route('/')
+@views.route('/home')
 def home():
-    return "<h1>Test</h1>"
+    return "<p>This is the home page<p>"
 

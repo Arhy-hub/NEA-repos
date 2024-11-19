@@ -23,7 +23,8 @@ CREATE TABLE assets (
     asset_name VARCHAR(100) NOT NULL,
     asset_type VARCHAR(100) NOT NULL,
     asset_value INT NOT NULL,
-    asset_price_change INT NOT NULL,
+    asset_price_change FLOAT NOT NULL,
+    asset_vol bigint NOT NULL,
     PRIMARY KEY (asset_id),
     FOREIGN KEY( market_id) REFERENCES markets(market_id)
 );
